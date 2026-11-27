@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Four card feature section</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 0.6875rem; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    /* 默认样式 */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* body 样式 */
+    body {
+      background-color: white;
+    }
+
+    /* 头部区域 */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+      margin-bottom: 100px;
+      gap: 20px;
+    }
+
+    .header h2 {
+      font-weight: 200;
+    }
+
+    .header p {
+      text-align: center;
+    }
+
+    /* 卡片区域 */
+    /* 加上网格布局 */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-template-rows: repeat(2,1fr);
+      gap: 30px;
+      /* background-color: aqua; */
+      max-width: 1110px;
+      margin: 0 auto;
+    }
+
+    /* 把每张卡片根据设计图 放在相应的位置 */
+    .card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      padding: 30px;
+      /* width: 300px; */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      /* 父类 */
+      /* position: relative; */
+    }
+
+    .card h3 {
+      text-align: left;
+    }
+
+    .card p {
+      color: hsl(212, 6%, 44%);
+      text-align: left;
+      padding-bottom: 40px;
+    }
+
+    .card img {
+      margin-top: auto;
+      align-self: flex-end;
+      width: 60px;
+    }
+
+    .card-supervisor {
+      background-color: pink;
+      grid-column: 1/2;
+      grid-row: 1/3;
+      align-self: center;
+      border-top: 3px solid hsl(180, 62%, 55%);
+    }
+
+
+    .card-team {
+      background-color: azure;
+      grid-column: 2/3;
+      grid-row: 1/2;
+      border-top: 3px solid hsl(0, 78%, 62%);
+    }
+
+
+    .card-karma {
+      background-color: aquamarine;
+      grid-column: 2/3;
+      grid-row: 2/3;
+      border-top: 3px solid hsl(34, 97%, 64%);
+    }
+
+    .card-calculator {
+      background-color: chocolate;
+      grid-column: 3/4;
+      grid-row: 1/3;
+      align-self: center;
+      border-top: 3px solid hsl(212, 86%, 64%);
+    }
+
+    /* 响应式设计 （768px） */
+      @media (max-width:768px) {
+        /* 网格从电脑端的3列变成1列 */
+        .grid-container {
+          grid-template-columns: 1fr;
+          margin: 0 20px;
+        }
+
+        /* 2. 清除卡片在电脑端的“跨行跨列”定位 */
+        .card-supervisor, 
+        .card-team, 
+        .card-karma, 
+        .card-calculator {
+          grid-column: auto;  /* 取消左右占位 */
+          grid-row: auto;     /* 取消上下跨行 */
+          align-self: stretch; /* 取消电脑端的居中，让高度自动撑开 */
+        }
+
+        /* 3. ⭐ 最重要的一步：调整手机上卡片的上下显示顺序！ */
+        /* 看设计图，手机上第一个是 Team，第二个才是 Supervisor */
+        .card-team       { order: 1; }
+        .card-supervisor { order: 2; }
+        .card-karma      { order: 3; }
+        .card-calculator { order: 4; }
+        
+        /* 顺手把头部间距改小一点 */
+        .header {
+          margin-top: 50px;
+          margin-bottom: 50px;
+          padding: 0 20px;
+        }
+      }
+  </style>
+</head>
+<body>
+   <div class="container">
+    <!-- 头部区域 -->
+    <div class="header">
+      <h2>Reliable, efficient delivery</h2>
+      <h1>Powered by Technology</h1>
+      <p>Our Artificial Intelligence powered tools use millions of project data <br> points 
+         to ensure that your project is successful</p>
+    </div>
+
+    <!-- 卡片区域 -->
+     <div class="grid-container">
+      <!-- 卡片1 -->
+       <div class="card card-supervisor">
+        <h3>Supervisor</h3>
+        <p>Monitors activity to identify project roadblocks</p>
+        <img src="./images/icon-supervisor.svg" alt="老花镜">
+       </div>
+      
+      <!-- 卡片2 -->
+       <div class="card card-team">
+        <h3>Team Builder</h3>
+        <p>Scans our talent network to create the optimal team for your project</p>
+        <img src="./images/icon-team-builder.svg" alt="老花镜">
+       </div>
+
+      <!-- 卡片3 -->
+       <div class="card card-karma">
+            <h3>Karma</h3>
+            <p>Regularly evaluates our talent to ensure quality</p>
+            <img src="./images/icon-karma.svg" alt="">
+        </div>
+
+      <!-- 卡片4 -->
+        <div class="card card-calculator">
+            <h3>Calculator</h3>
+            <p>Uses data from past projects to provide better delivery estimates</p>
+            <img src="./images/icon-calculator.svg" alt="">
+        </div>
+     </div>
+   </div>
+  
+
+
+  
+      <!-- <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+    </footer> -->
+</body>
+</html>
